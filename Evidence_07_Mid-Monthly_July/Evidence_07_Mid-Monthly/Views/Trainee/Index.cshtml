@@ -1,0 +1,46 @@
+﻿@model IEnumerable<Evidence_07_Mid_Monthly.Models.Trainee>
+@{
+    ViewBag.Title = "Index";
+}
+
+<div class="col-12">
+    <h1 class="alert-success d-flex justify-content-center">Trainees List</h1>
+    <div class="d-flex justify-content-end mb-1">
+        <a href="@Url.Action("Create","Trainee")" class="btn btn-primary">Create</a>
+    </div>
+</div>
+<div class="col-12">
+
+    <table class="table table-bordered">
+        <thead class="table-dark">
+            <tr>
+                <th>Trainee Id</th>
+                <th>Trainee Name</th>
+                <th>Picture</th>
+                <th>E-Mail</th>
+                <th>Training Location</th>
+                <th>Course Name</th>
+                <th>Edit / Delete</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var t in Model)
+            {
+                <tr>
+                    <td>@t.TraineeId</td>
+                    <td>@t.TraineeName</td>
+                    <td><img src="~/ImageUploads/@t.Picture" width="70" /></td>
+                    <td>@t.Email</td>
+                    <td>@t.TLocation</td>
+                    <td>@t.Course.CourseName</td>
+                    <td>
+                        @Html.ActionLink("Edit", "Edit", "Trainee", new { id = t.TraineeId }, new { @class = "btn btn-secondary btn-sm" })
+                        @Html.ActionLink("Delete", "Delete", "Trainee", new { id = t.TraineeId }, new { @class = "btn btn-danger btn-sm" })
+                    </td>
+                </tr>
+            }
+        </tbody>
+
+    </table>
+</div>
+

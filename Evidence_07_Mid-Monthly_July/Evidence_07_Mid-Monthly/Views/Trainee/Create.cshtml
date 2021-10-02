@@ -1,0 +1,83 @@
+﻿@model Evidence_07_Mid_Monthly.Models.TraineeViewModel
+@{
+    ViewBag.Title = "Create";
+}
+
+<div class="row my-3">
+    <div class="col-12">
+        <a title="Back to List" href="@Url.Action("Index","Trainee")" class="alert-danger btn btn-sm btn-secondary rounded-circle "><i class="bi bi-arrow-90deg-left"> Return</i></a>
+    </div>
+</div>
+<div class="row">
+    <div class="col-10 offset-2">
+        <h2>Create New Trainee</h2>
+    </div>
+</div>
+@using (Html.BeginForm("Create", "Trainee", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    <div class="row mb-1">
+        @Html.LabelFor(x => x.TraineeName, new { @class = "col-form-label col-2 text-end" })
+        <div class="col-4">
+            @Html.TextBoxFor(x => x.TraineeName, new { @class = "form-control" })
+        </div>
+        <div class="col-4">
+            @Html.ValidationMessageFor(x => x.TraineeName, "", new { @class = "text-danger" })
+        </div>
+    </div>
+    <div class="row mb-1">
+        @Html.LabelFor(x => x.Picture, new { @class = "col-form-label col-2 text-end" })
+        <div class="col-4">
+            @Html.TextBoxFor(x => x.Picture, new { @class = "form-control", type = "file" })
+        </div>
+        <div class="col-4">
+            @Html.ValidationMessageFor(x => x.Picture, "", new { @class = "text-danger" })
+        </div>
+    </div>
+    <div class="row mb-1">
+        @Html.LabelFor(x => x.Email, new { @class = "col-form-label col-2 text-end" })
+        <div class="col-4">
+            @Html.TextBoxFor(x => x.Email, new { @class = "form-control", type = "email" })
+        </div>
+        <div class="col-4">
+            @Html.ValidationMessageFor(x => x.Email, "", new { @class = "text-danger" })
+        </div>
+    </div>
+    <div class="row mb-1">
+        @Html.LabelFor(x => x.TLocation, new { @class = "col-form-label col-2 text-end" })
+        <div class="col-4">
+            @Html.TextBoxFor(x => x.TLocation, new { @class = "form-control" })
+        </div>
+        <div class="col-4">
+            @Html.ValidationMessageFor(x => x.TLocation, "", new { @class = "text-danger" })
+        </div>
+    </div>
+    <div class="row mb-1">
+        @Html.LabelFor(x => x.CourseId, new { @class = "col-form-label col-2 text-end" })
+        <div class="col-4">
+            @Html.DropDownListFor(x => x.CourseId, new SelectList(ViewBag.CourseList, "CourseId", "CourseName"), "---Select One---", new { @class = "form-select" })
+        </div>
+        <div class="col-4">
+            @Html.ValidationMessageFor(x => x.CourseId, "", new { @class = "text-danger" })
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-10 offset-2">
+            <button type="submit" class="btn btn-success">Save</button>
+        </div>
+    </div>
+}
+@section scripts{
+
+    <script src="~/Scripts/jquery-3.6.0.js"></script>
+    <script src="~/Scripts/jquery.validate.js"></script>
+    <script src="~/Scripts/jquery.validate.unobtrusive.js"></script>
+    <script>
+        $.validator.addMethod("location", function (value, element, params) {
+            if (value) {
+                return value == "Dhaka" || value == "Chattagram" || value == "Rajshahi"
+            }
+        });
+        $.validator.unobtrusive.adapters.addBool("location");
+    </script>
+}
+

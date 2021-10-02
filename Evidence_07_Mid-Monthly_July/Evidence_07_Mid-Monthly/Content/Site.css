@@ -1,0 +1,15 @@
+﻿body {
+    padding-top: 70px;
+}
+
+.main {
+    min-height: calc(100vh - 145px);
+}
+
+th, tr, td {
+    text-align: center;
+}
+.head{
+    text-align:center;
+    color: blueviolet;
+}

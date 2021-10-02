@@ -1,0 +1,53 @@
+﻿@model Evidence_07_Mid_Monthly.Models.Course
+@{
+    ViewBag.Title = "Edit";
+}
+
+<div class="row my-3">
+    <div class="col-12">
+        <a title="Back to List" href="@Url.Action("Index","Course")" class="alert-danger btn btn-sm btn-secondary rounded-circle "><i class="bi bi-arrow-90deg-left"> Return</i></a>
+    </div>
+</div>
+<div class="row my-3">
+    <div class="col-10 offset-2">
+        <h2>Edit Course</h2>
+    </div>
+</div>
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    @Html.HiddenFor(x => x.CourseId)
+    <div class="row mb-2">
+        @Html.LabelFor(x => x.CourseName, new { @class = "col-form-label col-2" })
+        <div class="col-4">
+            @Html.TextBoxFor(x => x.CourseName, new { @class = "form-control" })
+        </div>
+        <div class="col-4">
+            @Html.ValidationMessageFor(x => x.CourseName, "", new { @class = "text-danger" })
+        </div>
+    </div>
+    <div class="row mb-2">
+        @Html.LabelFor(x => x.Round, new { @class = "col-form-label col-2" })
+        <div class="col-4">
+            @Html.TextBoxFor(x => x.Round, new { @class = "form-control" })
+        </div>
+        <div class="col-4">
+            @Html.ValidationMessageFor(x => x.Round, "", new { @class = "text-danger" })
+        </div>
+    </div>
+    <div class="row mb-2">
+
+        <div class="col-10 offset-2">
+            <button type="submit" class="btn btn-primary">Update</button>
+        </div>
+
+    </div>
+}
+@section scripts {
+
+    <script src="~/Scripts/jquery-3.6.0.js"></script>
+    <script src="~/Scripts/jquery.validate.js"></script>
+    <script src="~/Scripts/jquery.validate.unobtrusive.js"></script>
+
+}
+

@@ -1,0 +1,39 @@
+﻿@model IEnumerable<Evidence_07_Mid_Monthly.Models.Course>
+@{
+    ViewBag.Title = "Index";
+}
+
+<div class="row">
+    <div class="col-12">
+        <h1 class="alert-success d-flex justify-content-center">Courses List</h1>
+        <div class="d-flex justify-content-end mb-1">
+            @Html.ActionLink("Create", "Create", "Course", new { }, new { @class = "btn btn-primary" })
+        </div>
+        <table class="table table-bordered">
+            <thead class="table-dark">
+                <tr>
+                    <th>Course Id</th>
+                    <th>Course Name</th>
+                    <th>Round</th>
+                    <th>Edit / Delete</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var c in Model)
+                {
+                    <tr>
+                        <td>@Html.DisplayFor(x => c.CourseId)</td>
+                        <td>@Html.DisplayFor(x => c.CourseName)</td>
+                        <td>@Html.DisplayFor(x => c.Round)</td>
+                        <td>
+                            @Html.ActionLink("Edit", "Edit", "Course", new { id = c.CourseId }, new { @class = "btn btn-secondary btn-sm" })
+                            @Html.ActionLink("Delete", "Delete", "Course", new { id = c.CourseId }, new { @class = "btn btn-danger btn-sm" })
+                        </td>
+                    </tr>
+                }
+
+            </tbody>
+        </table>
+    </div>
+</div>
+
